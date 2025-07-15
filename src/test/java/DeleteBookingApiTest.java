@@ -29,9 +29,11 @@ public class DeleteBookingApiTest {
         //var Id = createBookingApiResponse.extract().path("bookingid");
         var bookingId = createBookingApiResponse.extract().jsonPath().getInt("bookingid");
 
+        System.out.println(System.getenv("RESTBOOKER_USERNAME"));
+        System.out.println(System.getenv("RESTBOOKER_PASSWORD"));
         var deleteBookingApiResponse = deleteBookingApi.deleteBookingById(
                         bookingId,
-                        //"admin", "password123")
+   //                     "admin", "password123")
                 System.getenv("RESTBOOKER_USERNAME"),
                 System.getenv("RESTBOOKER_PASSWORD"))
                 .then().assertThat().statusCode(201);
