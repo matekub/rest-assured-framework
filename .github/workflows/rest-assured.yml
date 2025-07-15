@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: API Tests
-      run: mvn clean test-Pregression
+      run: mvn clean test -Pregression
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.6.2
       with:
