@@ -18,7 +18,7 @@ public class GetBookingApiTest {
     public void validateStatusCodeForGetBookingIdsApi(@Optional String testParam){
         System.out.println("Test param: " + testParam);
         var getBookingIdSResponse = new GetBookingApi().getAllBookingsIds()
-                .then().assertThat().statusCode(2001);
+                .then().assertThat().statusCode(200);
     }
     @Test(description = "Basic HTTP Status check for get booking by id API")
     public void validateStatusCodeForGetBookingByIdApi(){
