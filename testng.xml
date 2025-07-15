@@ -5,7 +5,9 @@
         <parameter name="testParam" value="initialTestValue"></parameter>
         <classes>
             <class name="GetBookingApiTest"></class>
-<!--            <class name="UpdateBookingApiTest"></class>-->
+            <class name="CreateBookingApiTest"></class>
+            <class name="DeleteBookingApiTest"></class>
+            <class name="CRUDTest"></class>
         </classes>
     </test>
     <listeners>
