@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     agent any
     tools {
         maven 'Maven'
@@ -11,12 +11,16 @@ pipeline{
         }
         stage('Test') {
             steps {
-                sh "mvn test -Pregression"
+                script {
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        sh "mvn test -Pregression"
+                    }
+                }
             }
         }
         stage('Reports') {
             steps {
-                allure includeProperties: false, jdk:'', results:[[path: 'allure-results']]
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
     }

@@ -33,16 +33,17 @@ public class DeleteBookingApiTest {
         System.out.println(System.getenv("RESTBOOKER_PASSWORD"));
         var deleteBookingApiResponse = deleteBookingApi.deleteBookingById(
                         bookingId,
-   //                     "admin", "password123")
-                System.getenv("RESTBOOKER_USERNAME"),
-                System.getenv("RESTBOOKER_PASSWORD"))
+                        //                     "admin", "password123")
+                        System.getenv("RESTBOOKER_USERNAME"),
+                        System.getenv("RESTBOOKER_PASSWORD"))
                 .then().assertThat().statusCode(201);
     }
 
     @Test(description = "Delete a non-existing booking")
     void deleteNonExistingBookingByIdTest() {
         var deleteBookingApiResponse = deleteBookingApi.deleteBookingById(
-                        -1, "admin", "password123")
+                        -1, System.getenv("RESTBOOKER_USERNAME"),
+                        System.getenv("RESTBOOKER_PASSWORD"))
                 .then().assertThat().statusCode(405);
     }
 
@@ -59,7 +60,8 @@ public class DeleteBookingApiTest {
         //var bookingId = createBookingApiResponse.extract().path("bookingid");
         var bookingId = createBookingApiResponse.extract().jsonPath().getInt("bookingid");
         var deleteBookingApiResponse = deleteBookingApi.deleteBookingById(
-                        bookingId, "admin", "password")
+                        bookingId, System.getenv("RESTBOOKER_USERNAME"),
+                        "123")
                 .then().assertThat().statusCode(403);
     }
 }
