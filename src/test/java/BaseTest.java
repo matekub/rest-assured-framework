@@ -1,5 +1,4 @@
 import com.github.javafaker.Faker;
-import org.example.util.TestDataHelper;
 import org.testng.annotations.DataProvider;
 
 import java.time.LocalDate;
@@ -18,7 +17,7 @@ public class BaseTest {
         return IntStream.range(0, 5)
                 .mapToObj(i -> {
                     // tworzenie nowej instancji faker dla każdego zestawu danych
-                    
+
                     var checkInDate = getFutureDate(dateFormatter);
                     var checkOutDate = LocalDate.parse(checkInDate, dateFormatter)
                             .plusDays(faker.get().number().numberBetween(1, 14))
