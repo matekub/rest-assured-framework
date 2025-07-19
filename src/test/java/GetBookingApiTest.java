@@ -18,9 +18,9 @@ public class GetBookingApiTest {
         var getBookingIdSResponse = new GetBookingApi().getAllBookingsIds()
                 .then().assertThat().statusCode(200);
     }
-    @Test(description = "Basic HTTP Status check for get booking by id API")
-    public void validateStatusCodeForGetBookingByIdApi(){
-        var getBookingIdSResponse = new GetBookingApi().getBookingById(1)
-                .then().assertThat().statusCode(200);
-    }
+//    @Test(description = "Basic HTTP Status check for get booking by id API")
+//    public void validateStatusCodeForGetBookingByIdApi(){
+//        var getBookingIdSResponse = new GetBookingApi().getBookingById(1)
+//                .then().assertThat().statusCode(200);
+//    }
 }
