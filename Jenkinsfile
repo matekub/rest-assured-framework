@@ -21,8 +21,9 @@ pipeline {
                                 credentialsId: 'REST_BOOKER_CREDS',
                                 usernameVariable:'RESTBOOKER_USERNAME',
                                 passwordVariable:'RESTBOOKER_PASSWORD'
-                        )])
-                        sh "mvn test -Pregression"
+                        )]) {
+                            sh "mvn test -Pregression"
+                        }
                     }
                 }
             }
