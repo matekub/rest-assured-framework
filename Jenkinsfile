@@ -29,8 +29,8 @@ pipeline {
                         )]) {
      //                       sh "mvn test -P${profile}"
                             sh "docker run -v \${pwd}/allure-results:app/allure-results" +
-                                    " -e RESTBOOKER_USERNAME -e RESTBOOKER_PASSWORD -e MAVEN_PROFILE=${profile}" +
-                                    "rest_assured"
+                                    " -e RESTBOOKER_USERNAME -e RESTBOOKER_PASSWORD -e MAVEN_PROFILE=${profile} " +
+                                    "rest-assured"
                         }
                     }
                 }
