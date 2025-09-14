@@ -22,7 +22,7 @@ pipeline {
                                 usernameVariable:'RESTBOOKER_USERNAME',
                                 passwordVariable:'RESTBOOKER_PASSWORD'
                         )]) {
-                            sh "mvn test -Pregression"
+                            sh "mvn test -P${profile}"
                         }
                     }
                 }
