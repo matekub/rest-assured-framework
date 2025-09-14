@@ -1,8 +1,12 @@
 pipeline {
     agent any
+//    tools {
+//        maven 'Maven'
+//    }
     tools {
-        maven 'Maven'
+        dockerTool 'Docker'
     }
+
     environment {
         DATE = sh(script: "date +%Y-%m-%d_%H-%M-%S", returnStdout: true).trim()
         REPORT_DIR = "reports/${DATE}"
@@ -11,6 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "mvn clean install -DskipTests"
+                sh "docker build -t rest-assured ."
             }
         }
         stage('Test') {
@@ -22,7 +27,10 @@ pipeline {
                                 usernameVariable:'RESTBOOKER_USERNAME',
                                 passwordVariable:'RESTBOOKER_PASSWORD'
                         )]) {
-                            sh "mvn test -P${profile}"
+     //                       sh "mvn test -P${profile}"
+                            sh "docker run -v \${pwd}/allure-results:app/allure-results" +
+                                    " -e RESTBOOKER_USERNAME -e RESTBOOKER_PASSWORD -e MAVEN_PROFILE=${profile}" +
+                                    "rest_assured"
                         }
                     }
                 }
