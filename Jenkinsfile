@@ -30,7 +30,9 @@ pipeline {
         }
         stage('Generate report') {
             steps {
-                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                script{
+                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                }
             }
         }
         stage('Archive report') {
